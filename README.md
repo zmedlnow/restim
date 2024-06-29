@@ -18,5 +18,5 @@ Other platforms: run from source, requires python 3:
 
 ```
 python3 -m pip install -r requirements.txt
-python3 restim2.py
+python3 restim_dual.py
 ```
