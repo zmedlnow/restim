@@ -11,7 +11,7 @@ from qt_ui.preferences_dialog import KEY_BUTTPLUG_WSDM_ENABLED, KEY_BUTTPLUG_WSD
 
 logger = logging.getLogger('restim.buttplug')
 
-DEVICE_ADDRESS = "00000000"
+DEVICE_ADDRESS = "00000001"
 
 
 class ButtplugWsdmClient(QtCore.QObject):
@@ -32,7 +32,7 @@ class ButtplugWsdmClient(QtCore.QObject):
 
         self.expander = FunscriptExpander()
 
-        self.client = QtWebSockets.QWebSocket("restim")
+        self.client = QtWebSockets.QWebSocket("restim2")
         self.client.error.connect(self.error)
         self.client.connected.connect(self.connected)
         self.client.textMessageReceived.connect(self.textMessageReceived)
@@ -56,7 +56,7 @@ class ButtplugWsdmClient(QtCore.QObject):
     def connected(self):
         logger.info('Connected to buttplug.')
         self.client.sendTextMessage(
-                json.dumps({"identifier": "restim", "address": DEVICE_ADDRESS, "version": 0})
+                json.dumps({"identifier": "restim2", "address": DEVICE_ADDRESS, "version": 0})
         )
 
     def textMessageReceived(self, msg):

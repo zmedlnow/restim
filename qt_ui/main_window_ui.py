@@ -200,7 +200,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "restim"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "restim2"))
         self.groupBox_3.setTitle(_translate("MainWindow", "volume"))
         self.groupBox.setTitle(_translate("MainWindow", "Pattern generator"))
         self.comboBox_patternSelect.setItemText(0, _translate("MainWindow", "Mouse"))

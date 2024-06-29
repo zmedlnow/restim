@@ -26,7 +26,7 @@ class WebSocketServer(QtCore.QObject):
             return
 
         address = QHostAddress.LocalHost if localhost_only else QHostAddress.Any
-        self.server = QtWebSockets.QWebSocketServer("restim t-code server", 1)  #not secure
+        self.server = QtWebSockets.QWebSocketServer("restim2 t-code server", 1)  #not secure
         b = self.server.listen(address, port)
         if b:
             logger.info(f"websocket server active at localhost:{port}")
