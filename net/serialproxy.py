@@ -17,18 +17,22 @@ class FunscriptExpander:
         self.alpha = 0
 
     def expand(self, cmd: TCodeCommand):
-        if cmd.interval < 10:
-            return [0], [cmd.value * 2 - 1], [0]
 
         alpha_start = self.alpha
         alpha_end = cmd.value * 2 - 1
         duration = cmd.interval
+        speed = (alpha_start - alpha_end) * 50 / duration * 1000
+        volume = 0.6 + (speed - 50) * (0.40/600)
+
+        if cmd.interval < 10:
+            return [0], [cmd.value * 2 - 1], [0], [volume]
 
         center = (alpha_start + alpha_end) / 2
         radius = abs(center - alpha_start)
         n = max(2, int(duration / 10))
         interval = np.linspace(0, cmd.interval, n)
         theta = np.linspace(0, np.pi, n)
+        volume = np.full(volume, n)
         beta = radius * np.sin(theta)
         alpha = center + radius * np.cos(theta)
         if alpha_start < alpha_end:
@@ -36,7 +40,7 @@ class FunscriptExpander:
             alpha = center - (alpha - center)
 
         self.alpha = alpha_end
-        return interval, alpha, beta
+        return interval, alpha, beta, volume
 
 
 class SerialProxy(QtCore.QObject):
