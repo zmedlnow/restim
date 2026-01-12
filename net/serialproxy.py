@@ -21,8 +21,8 @@ class FunscriptExpander:
         alpha_start = self.alpha
         alpha_end = cmd.value * 2 - 1
         duration = cmd.interval
-        speed = (alpha_start - alpha_end) * 50 / duration * 1000
-        volume = 0.6 + (speed - 50) * (0.40/600)
+        speed = abs(alpha_start - alpha_end) * 50 / duration * 1000
+        volume = 0.80 + (speed - 50) * (0.20/600)
 
         if cmd.interval < 10:
             return [0], [cmd.value * 2 - 1], [0], [volume]
@@ -32,7 +32,7 @@ class FunscriptExpander:
         n = max(2, int(duration / 10))
         interval = np.linspace(0, cmd.interval, n)
         theta = np.linspace(0, np.pi, n)
-        volume = np.full(volume, n)
+        volume = np.full(n, volume)
         beta = radius * np.sin(theta)
         alpha = center + radius * np.cos(theta)
         if alpha_start < alpha_end:
