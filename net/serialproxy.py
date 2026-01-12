@@ -22,7 +22,7 @@ class FunscriptExpander:
         alpha_end = cmd.value * 2 - 1
         duration = cmd.interval
         speed = abs(alpha_start - alpha_end) * 50 / duration * 1000
-        volume = 0.80 + (speed - 50) * (0.20/600)
+        volume = 0.85 + (speed - 50) * (0.15/600)
 
         if cmd.interval < 10:
             return [0], [cmd.value * 2 - 1], [0], [volume]
