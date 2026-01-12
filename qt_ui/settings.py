@@ -138,6 +138,7 @@ display_latency = Setting('display/latency', 200, float)
 buttplug_wsdm_enabled = Setting("network/buttplug-wsdm-enabled", False, bool)
 buttplug_wsdm_address = Setting("network/buttplug-wsdm-address", "ws://127.0.0.1:54817", str)
 buttplug_wsdm_auto_expand = Setting("network/buttplug-wsdm-auto-expand", True, bool)
+buttplug_wsdm_auto_expand_volume = Setting("network/buttplug-wsdm-auto-expand-volume", False, bool)
 
 
 websocket_enabled = Setting("network/websocket-enabled", True, bool)
@@ -152,6 +153,7 @@ udp_localhost_only = Setting("network/udp-localhost-only", False, bool)
 serial_enabled = Setting("network/serial-enabled", False, bool)
 serial_port = Setting("network/serial-port", "COM20", str)
 serial_auto_expand = Setting("network/serial-auto-expand", True, bool)
+serial_auto_expand_volume = Setting("network/serial-auto-expand-volume", False, bool)
 
 
 focstim_serial_port = Setting("focstim/serial_port", '', str)
